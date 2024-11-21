@@ -1,0 +1,29 @@
+.dumen-header-tab{
+    background-color: rgb(20, 21, 23);
+    border: 1px solid rgb(56,56,64);
+    border-bottom: 0px;
+}
+
+.dumen-header-tab:hover{
+    background-color: rgb(15, 16, 19);
+    border: 1px solid rgb(56,56,64);
+    border-bottom: 0px;
+}
+
+.dumen-header-tab-item:left{
+    border: none !important;
+}
+.dumen-header-tab-item:active{
+    border: none !important;
+    outline: none !important;
+}
+.dumen-header-tab-item{
+    color: #ffffff;
+}
+.dumen-header-tab-item:hover{
+    color: #ffffff;
+}
+
+.dumen-header-tab-item:active{
+    color: #ffffff !important;
+}
