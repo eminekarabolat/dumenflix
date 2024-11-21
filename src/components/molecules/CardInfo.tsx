@@ -1,27 +1,44 @@
 import React from 'react'
+import './CardInfo.css'
 
-function CardInfo() {
+interface ICardInfoProps{
+  name: string,
+  genre: string,
+  rating: 1|2|3|4|5,
+  productionYear: number 
+}
+function CardInfo(props: ICardInfoProps) {
+
+  const {name,genre,rating,productionYear} = props;
+ 
+    let starArray = [];
+  for(let i=0; i<5;i++){
+    if(i<rating){
+      starArray[i] =true;
+      
+    }else{
+      starArray[i] =false;
+    }
+   
+  }
   return (
-    <div style={{backgroundColor: 'transparent', borderBottomLeftRadius: '23px', borderBottomRightRadius: '23px'}}>
-      <div>
-        <label>Matrix</label>
+    <div className='row' style={{backgroundColor: 'transparent', borderBottomLeftRadius: '23px', borderBottomRightRadius: '23px', color:'white'}}>
+      <div className="col-5 ">
+      <p className='card-text-title' >{name}</p>
+      <p className='card-text'>{genre}</p>
       </div>
-      <div>
-        <label>10/10</label>
-      </div>
-      <div className='row'>
-        <div className='col'>
-        <label>Bilim-Kurgu</label>
+      <div className="col-7 pe-0">
+ 
+      <div className='card-text-title rating-star'>{
+      starArray.map((data)=>{
+        return (data ? <i className="fa-solid fa-star"></i> : <i className="fa-regular fa-star"></i>)
 
-        </div>
-        <div className='col'>
-        <label>Aksiyon</label>
 
-        </div>
+      })
+        }</div>
+     <p className='card-text'>{productionYear}</p>
       </div>
-      <div>
-        <label>1999</label>
-      </div>
+
     </div>
   )
 }
