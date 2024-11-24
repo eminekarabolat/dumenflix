@@ -1,0 +1,11 @@
+.communication-links{
+    color:white;
+    text-decoration: none;
+}
+.communication-links:hover{
+    text-decoration:underline;
+}
+
+.footer{
+    background-color: rgb(20, 21, 23);
+}

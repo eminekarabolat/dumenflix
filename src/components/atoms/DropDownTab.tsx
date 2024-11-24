@@ -1,21 +1,29 @@
 import React from "react";
-
+import './DropDownTab.css';
 interface IDropDownProps{
     text: string
 }
 function DropDownTab(props: IDropDownProps) {
     const {text} = props;
+    const genres=['Aksiyon', 'Drama', 'Komedi', 'Gerilim', 'Bilim Kurgu', 'Korku', 'Macera', 'Fantastik', 'Romantik', 'Animasyon', 'Belgesel', 'Gizem']
   return (
-    <div className="dropdown dumen-header-tab">
-    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown button
-    </button>
-    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a className="dropdown-item" href="#">Action</a>
-      <a className="dropdown-item" href="#">Another action</a>
-      <a className="dropdown-item" href="#">Something else here</a>
-    </div>
-  </div>
+    
+      <div className="dropdown dumen-header-tab-item col d-grid p-0 ">
+  <button className="  dropdown-toggle dumen-header-tab" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+    {text}
+  </button>
+  <ul className="dropdown-menu dropdown-elements">
+    {
+      genres.map((genre,index)=>{
+       return <li  key={index}><a  style={{color:'white'}} className="dropdown-item dropdown-element" href="#">{genre}</a></li>
+      })
+    }
+    
+    
+  </ul>
+</div>
+    
+    
   );
 }
 
