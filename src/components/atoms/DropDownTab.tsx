@@ -5,7 +5,9 @@ interface IDropDownProps{
 }
 function DropDownTab(props: IDropDownProps) {
     const {text} = props;
-    const genres=['Aksiyon', 'Drama', 'Komedi', 'Gerilim', 'Bilim Kurgu', 'Korku', 'Macera', 'Fantastik', 'Romantik', 'Animasyon', 'Belgesel', 'Gizem']
+    const genres=['Aksiyon', 'Drama', 'Komedi', 'Gerilim', 'Bilim Kurgu', 'Korku', 'Macera']
+
+    
   return (
     
       <div className="dropdown dumen-header-tab-item col d-grid p-0 ">
