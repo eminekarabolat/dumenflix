@@ -5,6 +5,7 @@ import{
 import HomePage from './page/HomePage'
 import LoginPage from './page/LoginPage'
 import RegisterPage from './page/RegisterPage'
+import Watching from './components/organisms/Watching'
 
 function Routerpage() {
   return (
@@ -13,6 +14,7 @@ function Routerpage() {
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
+            <Route path='/watching' element={<Watching />} />
         </Routes>
     </BrowserRouter>
   )
