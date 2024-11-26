@@ -6,7 +6,8 @@ import './HomePage.css'
 import ContentList from "../components/organisms/ContentList";
 import Footer from "../components/organisms/Footer";
 import { useParams } from "react-router-dom";
-function HomePage() {
+
+function Kesfet() {
   const {genre} = useParams();
   return (
     <div className="container">
@@ -18,9 +19,7 @@ function HomePage() {
         <HeaderTabs />
       </div>
       
-      <div className="row justify-content-center mt-2" style={{backgroundColor: 'rgb(40, 40, 50)', borderRadius: '26px'}}>
-        <ContentList genre={genre}/>
-      </div>
+      
       <div className="row">
         <Footer/>
       </div>
@@ -28,4 +27,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default Kesfet;
