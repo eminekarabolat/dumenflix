@@ -44,7 +44,7 @@ function Watching() {
                                 <img style={{ width: '150px', height: '150px' }} src={imageUrl} alt="movie-img" />
                             </div>
                             <div>
-                                <CardInfo name={name} genre={genre} productionYear={productionYear} rating={rating} />
+                                <CardInfo title={name} genre={genre} productionYear={productionYear} rating={rating} />
                             </div>
                             <hr style={{ color: 'red' }} />
                             <div className='m-2 overflow-auto' style={{ color: 'white', maxHeight: '120px' }}>

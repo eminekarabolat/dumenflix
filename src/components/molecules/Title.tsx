@@ -2,15 +2,12 @@ import React from 'react'
 import Icon from '../atoms/Icon'
 import './Title.css'
 import { useNavigate } from 'react-router-dom'
-import swal from 'sweetalert';
 function Title() {
   const navigate=useNavigate();
   const anasayfayaDon=()=>{
-    swal('Tıklandı.')
     navigate('/');
     
   }
-  console.log('Sayfa render oldu')
   return (
     <div className="row align-items-center p-3 dumen-baslik" onClick={anasayfayaDon}  >
         <Icon />
