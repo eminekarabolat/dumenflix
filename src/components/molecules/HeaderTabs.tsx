@@ -2,7 +2,7 @@ import React from 'react'
 import './HeaderTabs.css'
 import Tab from '../atoms/Tab'
 import DropDownTab from '../atoms/DropDownTab'
-import { useNavigate } from 'react-router-dom';
+
 function HeaderTabs() {
   
   return (

@@ -3,17 +3,19 @@ import { IMovieCardResponse } from "../../models/IMovieCardResponse";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import apis from "../../config/RestApis";
 import { IBaseResponse } from "../../models/IBaseResponse";
+import { json } from "stream/consumers";
+import { IMovieFilterRequest } from "../../models/IMovieFilterRequest";
 
 interface IMovieState{
     movieCardList: IMovieCardResponse[],
-    isMovieCardListLoading: boolean,
-    title: string
+    isMovieCardListLoading: boolean
+  
 }
 
 const initialMovieState: IMovieState = {
     movieCardList: [],
-    isMovieCardListLoading: false,
-    title: ''
+    isMovieCardListLoading: false
+    
 }
 
 //fetch
@@ -38,14 +40,31 @@ export const fetchGetMoviesByTitle = createAsyncThunk(
         return await fetch(apis.moviecardService+ '/movie-by-title?name='+title).then(data=>data.json())
     }
 )
+export const fetchGetMoviesByRating = createAsyncThunk(
+    'movie/fetchGetMoviesByRating',
+    async()=>{
+        return await fetch(apis.moviecardService+ '/top-rated-movies').then(data=>data.json())
+    }
+)
+
+export const fetchGetMoviesByFilter = createAsyncThunk(
+    'movie/fetchGetMoviesByFilter',
+    async(payload:IMovieFilterRequest)=>{
+        return await fetch(apis.moviecardService+'/filter-movie',{
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body:JSON.stringify(payload)
+                }).then(data=>data.json()) 
+        
+    }
+
+)
 
 const movieSlice= createSlice({
     name:'post',
     initialState: initialMovieState,
     reducers:{
-        changeTitle: (state, action)=>{
-            state.title = action.payload
-        }
+        
     },
     extraReducers:(build)=>{
         build.addCase(fetchGetAllMovies.pending,(state)=>{state.isMovieCardListLoading=true})
@@ -66,13 +85,26 @@ const movieSlice= createSlice({
         build.addCase(fetchGetMoviesByTitle.fulfilled,(state,action: PayloadAction<IBaseResponse>)=>{
             state.isMovieCardListLoading = false;
             if(action.payload.code === 200){
-                console.log('title fulfilled: ', action.payload.data)
                 state.movieCardList = action.payload.data;
             }
         })
+        build.addCase(fetchGetMoviesByRating.pending,(state)=>{state.isMovieCardListLoading=true})
+        build.addCase(fetchGetMoviesByRating.fulfilled,(state,action: PayloadAction<IBaseResponse>)=>{
+            state.isMovieCardListLoading = false;
+            if(action.payload.code === 200){
+                state.movieCardList = action.payload.data;
+            }
+        })
+
+        build.addCase(fetchGetMoviesByFilter.pending,(state)=>{state.isMovieCardListLoading=true})
+        build.addCase(fetchGetMoviesByFilter.fulfilled,(state,action: PayloadAction<IBaseResponse>)=>{
+            state.isMovieCardListLoading = false;
+            if(action.payload.code === 200){
+                state.movieCardList = action.payload.data;
+            }
+        })
+
     }
 })
-export const {
-    changeTitle
-} = movieSlice.actions
+
 export default movieSlice.reducer;
