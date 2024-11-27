@@ -1,8 +1,43 @@
-.filter-button{
-    background-color: black; 
-    color: white;  
+.header-dropdown:left{
+    border: none !important;
 }
 
-.filter-button:hover{
+.header-dropdown:active{
+    border: none !important;
+    outline: none !important;
+    color: white;
+}
+
+.header-dropdown:hover{
+    color: white;
+}
+
+.header-dropdown{
+    color: white;
+}
+
+.button-dropdown{
+    background-color: rgb(20, 21, 23);
+    border: 1px solid rgb(56,56,64);
+    border-bottom: 0px;
+    color: white;
+    width: 60%;
+}
+
+.button-dropdown:hover{
+    background-color: rgb(15, 16, 19);
+    border: 1px solid rgb(56,56,64);
+    border-bottom: 0px;
+}
+
+.ul-dropdown{
+    background-color: black;  
+}
+
+.li-dropdown{
+    color: white;
+}
+
+.li-dropdown:hover{
     background-color: rgb(172, 44, 44); 
 }
