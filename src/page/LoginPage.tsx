@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Icon from '../components/atoms/Icon'
 import './LoginPage.css'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { DfDispatch } from '../store';
+import { fetchLogin } from '../store/features/userSlice';
 function LoginPage() {
     const navigate = useNavigate();
+    const dispatch = useDispatch<DfDispatch>();
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     const kayitOlButton = () => {
         return navigate('/register');
+    }
+    const doLoginButton=()=>{
+        dispatch(fetchLogin({username,password})).then(data=>{
+            console.log(data)
+            if(data.payload.code===200){
+                navigate('/')
+            }
+        })
     }
     return (
         <div className="container">
@@ -28,13 +42,13 @@ function LoginPage() {
                     </div>
                     <div className="col-4 align-content-center">
                         <div className='me-3 mb-3'>
-                            <input className='form-control' type="text" placeholder='Email' />
+                            <input className='form-control' onChange={evt=>setUsername(evt.target.value)} type="text" placeholder='Kullanıcı Adı' />
                         </div>
                         <div className='me-3 mb-3'>
-                            <input className='form-control' type="text" placeholder='Şifre' />
+                            <input className='form-control' onChange={evt=>setPassword(evt.target.value)} type="password" placeholder='Şifre' />
                         </div>
                         <div className='text-center d-grid ' style={{ marginLeft: '20px', marginRight: '38px' }}>
-                            <input className='btn btn-success' type="button" value="Giriş Yap" />
+                            <input className='btn btn-success' type="button" value="Giriş Yap" onClick={doLoginButton} />
                         </div>
                         <div className='text-end' style={{ marginRight: '38px', marginTop: '15px' }}>
                             <input className='btn btn-warning' type="button" value="Kayıt Ol" onClick={kayitOlButton} />

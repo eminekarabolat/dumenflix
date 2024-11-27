@@ -1,4 +1,7 @@
 import movieSlice from './movieSlice'
+import userSlice from './userSlice'
 export{
-    movieSlice
+    movieSlice,
+    userSlice
+
 }
