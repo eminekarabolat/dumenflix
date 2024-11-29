@@ -5,20 +5,30 @@ import apis from "../../config/RestApis";
 import { IBaseResponse } from "../../models/IBaseResponse";
 import { json } from "stream/consumers";
 import { IMovieFilterRequest } from "../../models/IMovieFilterRequest";
+import { IMovieDetailsResponse } from "../../models/IMovieDetailsResponse";
 
 interface IMovieState{
     movieCardList: IMovieCardResponse[],
-    isMovieCardListLoading: boolean
-  
+    isMovieCardListLoading: boolean,
+    movieDetails: IMovieDetailsResponse | undefined,
+    isMovieDetailsLoading: boolean
 }
 
 const initialMovieState: IMovieState = {
     movieCardList: [],
-    isMovieCardListLoading: false
-    
+    isMovieCardListLoading: false,
+    movieDetails: undefined,
+    isMovieDetailsLoading: false
 }
 
 //fetch
+
+export const fetchGetMovieDetails = createAsyncThunk(
+    'movie-details/fetchGetMovieDetails',
+    async(id: number | undefined)=>{
+        return await fetch(apis.movieDetailsService + '/get-movie-details?id='+id).then(data=>data.json())
+    }
+)
 
 export const fetchGetAllMovies = createAsyncThunk(
     'movie/fetchGetAllMovies',
@@ -101,6 +111,14 @@ const movieSlice= createSlice({
             state.isMovieCardListLoading = false;
             if(action.payload.code === 200){
                 state.movieCardList = action.payload.data;
+            }
+        })
+        build.addCase(fetchGetMovieDetails.pending,(state)=>{state.isMovieDetailsLoading=true})
+        build.addCase(fetchGetMovieDetails.fulfilled,(state,action: PayloadAction<IBaseResponse>)=>{
+            state.isMovieDetailsLoading = false;
+            console.log('slice, movie: ', action.payload.data)
+            if(action.payload.code === 200){
+                state.movieDetails = action.payload.data;
             }
         })
 

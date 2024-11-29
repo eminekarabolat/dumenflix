@@ -23,6 +23,12 @@ function Tab(props: TabProps) {
       break;
       case 'En Yüksek Puanlı': dispatch(fetchGetMoviesByRating()); navigate('/');
       break;
+      case 'Diziler': navigate('/diziler');
+      break;
+      case 'IMDb500': navigate('/imdb500')
+      break;
+      case 'En Popüler': navigate('/en-populer')
+      break;
       default: console.log('???')
       
     }

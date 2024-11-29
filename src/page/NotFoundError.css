@@ -1,0 +1,8 @@
+.not-found-title{margin-top: 8vh;
+     background-color: rgb(40,30,30) ;
+      margin-inline: 25vw;
+       border-radius: 30px;
+}
+.not-found-title:hover{
+    background-color: rgb(30,30,40);
+}

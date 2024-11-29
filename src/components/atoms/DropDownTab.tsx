@@ -9,7 +9,7 @@ function DropDownTab(props: IDropDownProps) {
     const genres=['Aksiyon', 'Drama', 'Komedi', 'Gerilim', 'Bilim_Kurgu', 'Korku', 'Macera']
     const navigate = useNavigate();
     const goToSearchByGenre = (genre: string)=>{
-      navigate('/' + genre);
+      navigate('/genre/' + genre);
     }
     
   return (

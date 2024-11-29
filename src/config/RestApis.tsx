@@ -4,6 +4,7 @@ const server = devUrl;
 
 const apis = {
     moviecardService: server + '/movie',
-    userService: server + '/user'
+    userService: server + '/user',
+    movieDetailsService: server + '/movie-details'
 }
 export default apis;
