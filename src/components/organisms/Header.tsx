@@ -37,14 +37,14 @@ function Header() {
           ?
           
           <div className="row">
-            <div className="col-6 text-end">
-              <div className="row"><label style={{color:'white'}} >{'@'+user?.username}</label></div>
-              <div className="mt-2 ">
+            <div className="col-6 text-center mt-3">
+              <div className="row ms-3"><label style={{color:'white'}} >{'@'+user?.username}</label></div>
+              <div className="mt-2 d-grid ms-4">
                 <input type="button" value="Çıkış" className="btn btn-danger" onClick={logout}/>
               </div>
             </div>
-            <div className="col-6 text-end">
-              <img src="https://picsum.photos/100/100" alt="profile-photo" />
+            <div className="col-4 ms-4 ">
+              <img style={{borderRadius:'50%'}} src="https://picsum.photos/100/100" alt="profile-photo" />
             </div>
             
           </div>
